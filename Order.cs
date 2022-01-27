@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace Practice_6
+﻿namespace Practice_6
 {
     public class Order
     {
