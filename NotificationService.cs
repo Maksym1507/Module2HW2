@@ -4,9 +4,9 @@ namespace Practice_6
 {
     public class NotificationService
     {
-        public static void OrderNotice(Order order)
+        public static void ShowMessage(string message)
         {
-            Console.WriteLine($"Order {order.ID} was formed. Quantity of products = {order.Quantity}\n");
+            Console.Write(message);
         }
     }
 }

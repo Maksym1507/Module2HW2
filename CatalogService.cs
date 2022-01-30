@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Practice_6
 {
     public class CatalogService
     {
         private static readonly Catalog _products;
+
         static CatalogService()
         {
             _products = Catalog.Instance;
@@ -13,10 +17,10 @@ namespace Practice_6
 
         public static void ShowProducts()
         {
-            Console.WriteLine("Product range: ");
+            NotificationService.ShowMessage("Product range:\n");
             foreach (var item in _products.ListOfProducts)
             {
-                Console.Write(item + "\n");
+                NotificationService.ShowMessage($"{item}\n");
             }
 
             Console.WriteLine();

@@ -15,7 +15,7 @@ namespace Practice_6
 
         public static StringBuilder StringBuilderSelectedProducts { get; set; }
 
-        public void AddToShoppingCart(params string[] selectedProducts)
+        public void AddToShoppingCart(string[] selectedProducts)
         {
             bool checkAvailability;
             for (int i = 0; i < selectedProducts.Length; i++)
@@ -32,7 +32,7 @@ namespace Practice_6
 
                 if (!checkAvailability)
                 {
-                    Console.WriteLine("This product(-s) is/are absent in catalog");
+                    NotificationService.ShowMessage("This product(-s) is/are absent in catalog\n");
                     ShoppingCart.SelectedProducts = null;
                     return;
                 }
@@ -42,26 +42,26 @@ namespace Practice_6
 
             if (!CheckingSelectedProducts(out string message))
             {
-                Console.WriteLine(message);
+                NotificationService.ShowMessage(message);
                 ShoppingCart.SelectedProducts = null;
                 return;
             }
 
-            Console.WriteLine("Product(-s) was/were added to shopping cart\n");
+            NotificationService.ShowMessage("Product(-s) was/were added to shopping cart\n");
         }
 
         public static void ShowShoppingCart()
         {
             if (!CheckingSelectedProducts(out string message))
             {
-                Console.WriteLine(message);
+                NotificationService.ShowMessage(message);
                 return;
             }
 
-            Console.WriteLine("Contents of the shopping cart: ");
+            NotificationService.ShowMessage("Contents of the shopping cart:\n");
             foreach (var item in ShoppingCart.SelectedProducts)
             {
-                Console.Write(item + "\n");
+                NotificationService.ShowMessage($"{item}\n");
             }
 
             Console.WriteLine();
@@ -75,12 +75,12 @@ namespace Practice_6
             if (ShoppingCart.SelectedProducts == null)
             {
                 checkSelectedProducts = false;
-                msg = "Shopping cart is empty";
+                msg = "Shopping cart is empty\n";
             }
             else if (ShoppingCart.SelectedProducts.Length > 10)
             {
                 checkSelectedProducts = false;
-                msg = "Quantity of products more than 10";
+                msg = "Quantity of products more than 10\n";
             }
 
             return checkSelectedProducts;
